@@ -26,14 +26,22 @@ export default function RootLayout({
       <body className={inter.className}>
         <ExchangeRatesProvider>
           <Container>
-            <h1>Exchange Rate Calculator</h1>
+            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+                Exchange Rate
+              </span>{" "}
+              Calculator
+            </h1>
+
             <InputAmount />
             <ListOfCurrenciesOption
-              key={"fromCurrency"}
+              key={"ListFromCurrency"}
+              name={"fromCurrency"}
               text={"Select the currency of origin"}
             />
             <ListOfCurrenciesOption
-              key={"toCurrency"}
+              key={"ListToCurrency"}
+              name={"toCurrency"}
               text={"Select the destination currency"}
             />
             <ButtonConvert />

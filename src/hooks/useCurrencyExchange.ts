@@ -14,8 +14,8 @@ type PropsType = {
   amount: number;
 };
 
-const FETCH_URL = (params: PropsType) =>
-  `${apiUrl}convert?access_key=${apiKey}&from=${params.from}&to=${params.to}&amount=${params.amount}`;
+const FETCH_URL = (props: PropsType) =>
+  `${apiUrl}convert?access_key=${apiKey}&from=${props.from}&to=${props.to}&amount=${props.amount}`;
 
 export async function useCurrencyExchange(props: PropsType) {
   try {

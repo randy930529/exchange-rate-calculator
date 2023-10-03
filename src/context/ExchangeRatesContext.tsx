@@ -15,7 +15,7 @@ const initialState: StateType = {
   toCurrency: "",
 } as const;
 
-export const ExchangeRatesContext = createContext({});
+export const ExchangeRatesContext = createContext<any>({});
 
 export const useExchangeRates = () => {
   const context = useContext(ExchangeRatesContext);
@@ -31,10 +31,9 @@ export const ExchangeRatesProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [exchangeRates, setExchangeRates] = useLocalStorage(
-    "exchangeRates",
-    initialState
-  );
+  const [exchangeRates, setExchangeRates] = useLocalStorage("exchange-rates", {
+    ...initialState,
+  });
 
   const createExchangeRates = (params: StateType) =>
     setExchangeRates({

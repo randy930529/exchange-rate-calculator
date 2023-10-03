@@ -7,15 +7,14 @@ import { useExchangeRates } from "@/context/ExchangeRatesContext";
 export default function ButtonConvert() {
   const { exchangeRates } = useExchangeRates();
   const { amount, fromCurrency, toCurrency } = exchangeRates;
-
   const router = useRouter();
-  return (
-    <Button
-      onClick={() =>
-        router.push(`/convert/${fromCurrency}/${toCurrency}/${amount}`)
-      }
-    >
-      Convertir
-    </Button>
-  );
+
+  const handleConvert = () => {
+    console.log(exchangeRates);
+    if (fromCurrency && toCurrency) {
+      router.push(`/convert/${fromCurrency}/${toCurrency}/${amount}`);
+    }
+  };
+
+  return <Button onClick={handleConvert}>Convertir</Button>;
 }

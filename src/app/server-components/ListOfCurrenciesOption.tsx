@@ -2,12 +2,12 @@ import { useFetchCurrencies } from "@/hooks/useFetchCurrencies";
 import SelectCurrency from "@/client-components/SelectCurrency";
 
 export async function ListOfCurrenciesOption(props: {
-  key: any;
+  name: string;
   text: string;
 }) {
   const data = await useFetchCurrencies();
 
-  if (!data && !data.rates) return <SelectCurrency> </SelectCurrency>;
+  if (!data && !data.rates) return <SelectCurrency />;
 
   const currencies = Object.keys(data.rates || {}).map((code) => (
     <option key={code} value={code}>
@@ -16,7 +16,7 @@ export async function ListOfCurrenciesOption(props: {
   ));
 
   return (
-    <SelectCurrency>
+    <SelectCurrency key={props.name} name={props.name}>
       <option value="">{props.text}</option>
       {currencies}
     </SelectCurrency>

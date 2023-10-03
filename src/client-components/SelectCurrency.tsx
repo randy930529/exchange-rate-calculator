@@ -1,17 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
 import Select from "./Select";
+import { useExchangeRates } from "@/context/ExchangeRatesContext";
 
 export default function SelectCurrency({
   children,
+  name,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  name?: string;
 }) {
-  const [currency, setCurrency] = useState("");
+  const { exchangeRates, updateExchangeRates } = useExchangeRates();
+  const currency = exchangeRates[`${name}`];
 
   return (
-    <Select value={currency} onChange={(e) => setCurrency(e.target.value)}>
+    <Select
+      value={currency}
+      name={name}
+      onChange={(e) =>
+        updateExchangeRates({
+          ...exchangeRates,
+          [e.target.name]: e.target.value,
+        })
+      }
+    >
       {children}
     </Select>
   );
