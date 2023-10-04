@@ -19,24 +19,9 @@ const FETCH_URL = (props: PropsType) =>
 
 export async function useCurrencyExchange(props: PropsType) {
   try {
-    // return await fetch(FETCH_URL(props), {
-    //   next: { revalidate },
-    // }).then<ResType>((res) => res.json());
-    return {
-      success: true,
-      query: {
-        from: "GBP",
-        to: "JPY",
-        amount: 25,
-      },
-      info: {
-        timestamp: 1519328414,
-        rate: 148.972231,
-      },
-      historical: "",
-      date: "2018-02-22",
-      result: 3724.305775,
-    };
+    return await fetch(FETCH_URL(props), {
+      next: { revalidate },
+    }).then<ResType>((res) => res.json());
   } catch (error) {
     console.error("Error converting amount:", error);
   }
