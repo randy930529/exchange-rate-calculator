@@ -10,7 +10,7 @@ export type StateType = {
 };
 
 const initialState: StateType = {
-  amount: "0",
+  amount: "0.00",
   fromCurrency: "",
   toCurrency: "",
 } as const;

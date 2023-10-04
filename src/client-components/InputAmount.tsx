@@ -11,8 +11,11 @@ export default function InputAmount() {
     <Input
       type="number"
       value={amount}
-      onChange={(e) => updateExchangeRates(e.target.value)}
-      placeholder="Ingresa la cantidad"
+      onChange={(e) => updateExchangeRates({
+          ...exchangeRates,
+          amount: e.target.value,
+        })}
+      placeholder="0.00"
     />
   );
 }

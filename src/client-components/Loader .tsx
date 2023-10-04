@@ -8,9 +8,6 @@ const Loader = styled.div`
     --loader-color: #0071e2;
     width: 130px;
     height: var(--height-of-loader);
-    border-radius: 30px;
-    background-color: rgba(0,0,0,0.2);
-    position: relative;
   }
   
   ::before {
@@ -20,7 +17,7 @@ const Loader = styled.div`
     top: 0;
     left: 0;
     width: 0%;
-    height: 100%;
+    height: 3px;
     border-radius: 30px;
     animation: moving 1s ease-in-out infinite;
     ;
