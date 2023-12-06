@@ -5,6 +5,10 @@ const revalidate = (60 * 10) as number;
 type ResType = {
   success: boolean;
   rate: number;
+  info: {
+    timestamp: number;
+    rate: number;
+  };
   result: number;
 };
 

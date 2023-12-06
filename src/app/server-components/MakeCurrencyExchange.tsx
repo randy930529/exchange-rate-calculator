@@ -11,12 +11,16 @@ export async function MakeCurrencyExchange({
   amount: number;
 }) {
   const data = await useCurrencyExchange({ from, to, amount });
-  const { info, result } = data;
+  if (data) {
+    const { info, result } = data;
 
-  return (
-    <Result>
-      <p>{`Converted amount: ${result} ${to}`}</p>
-      <p>{`Exchange rate: 1 ${from} = ${info.rate} ${to}`}</p>
-    </Result>
-  );
+    return (
+      <Result>
+        <p>{`Converted amount: ${result} ${to}`}</p>
+        <p>{`Exchange rate: 1 ${from} = ${info.rate} ${to}`}</p>
+      </Result>
+    );
+  }
+
+  return null;
 }
